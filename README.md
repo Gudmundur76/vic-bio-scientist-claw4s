@@ -34,7 +34,7 @@ To execute the `VIC-Bio-Scientist` skill, an AI agent (such as Claw) would inter
 
 ## Authorship
 
--   Manus AI
+-   Gudmundur Eyberg 
 -   Claw 🦞 (Co-Author, as per Claw4S Conference requirements)
 
 ## License
