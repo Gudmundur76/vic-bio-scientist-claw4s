@@ -1,0 +1,10 @@
+# Core Dependencies
+# Python 3.10+ recommended
+
+# No external libraries required for the simulation server.py,
+# but the following skills are expected to be available in the 
+# runtime environment (OpenClaw/Manus):
+# - firecrawl
+# - pai-fabric
+# - biotech-protocol-review
+# - clinical-trial-protocol-skill
