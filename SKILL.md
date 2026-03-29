@@ -1,20 +1,20 @@
 ---
 name: vic-bio-scientist
 description: An autonomous, self-bootstrapping AI co-scientist for biomedical research, built on the VIC-Architect Eight Pillar Framework and VIC-0-SBVI principles. It autonomously acquires knowledge, analyzes clinical protocols, and generates optimized research designs.
-allowed-tools: Bash(curl *), firecrawl, biotech-protocol-review, clinical-trial-protocol-skill, pai-fabric
+allowed-tools: Bash(curl *), firecrawl, biotech-protocol-review, clinical-trial-protocol-skill, pai-fabric, python3
 ---
 
 # VIC-Bio-Scientist: A Self-Bootstrapping Agent for Clinical Protocol Evolution
 
 This skill defines an advanced AI co-scientist capable of autonomously conducting biomedical research, specifically focusing on the evolution and optimization of clinical trial protocols. It integrates the foundational principles of the **VIC-Architect Eight Pillar Framework (v4.2)** for robust agent design and the **VIC-0-SBVI (Self-Bootstrapping Vertical Intelligence)** engine for continuous, zero-preset learning and domain construction. The agent leverages specialized biomedical skills (`biotech-protocol-review`, `clinical-trial-protocol-skill`) to execute scientific workflows.
 
-## Purpose
+## Installation & Setup
 
-To demonstrate an agent-native approach to scientific discovery and protocol optimization by:
-- Autonomously acquiring and integrating biomedical knowledge from primary sources.
-- Applying the VIC-Architect framework to ensure rigorous, reproducible, and generalizable research.
-- Utilizing VIC-0-SBVI to enable continuous learning and adaptation of its internal scientific world model.
-- Generating optimized clinical trial protocols based on real-world data and learned insights.
+To execute the VIC-Bio-Scientist, the following environment is required:
+1. **Python 3.x**
+2. **OpenClaw/Manus Environment** with `firecrawl`, `biotech-protocol-review`, and `clinical-trial-protocol-skill` installed via `clawhub`.
+
+The execution engine is provided in `server.py`.
 
 ## Workflows
 
@@ -23,6 +23,11 @@ To demonstrate an agent-native approach to scientific discovery and protocol opt
 **Description:** Sets up the VIC-Bio-Scientist agent, defines its initial biomedical research directive, and establishes the foundational knowledge graph based on VIC-Architect's Memory Architecture.
 
 **Input:** `research_directive` (string) - A high-level goal for VIC-Bio-Scientist's specialization (e.g., "optimize clinical trial designs for novel oncology therapeutics").
+
+**Execution:**
+```shell
+python3 server.py initialize --directive "optimize clinical trial designs for novel oncology therapeutics"
+```
 
 **Output:** Confirmation of initialization and the establishment of the agent's initial knowledge domain.
 
@@ -35,6 +40,11 @@ To demonstrate an agent-native approach to scientific discovery and protocol opt
 **Description:** Runs a single iteration of knowledge acquisition, protocol analysis, and optimization. This cycle embodies the Proposer, Coder, and Solver roles of VIC-0-SBVI, guided by VIC-Architect's Reasoning Protocol.
 
 **Input:** `focus_area` (string, optional) - A specific sub-area for the current research cycle (e.g., "PD-1 inhibitor trials"). If not provided, retrieves from memory.
+
+**Execution:**
+```shell
+python3 server.py run_cycle --focus "CAR T-cell therapy for lupus"
+```
 
 **Output:** Summary of new knowledge acquired, protocol insights, and proposed next steps for optimization.
 
@@ -49,6 +59,11 @@ To demonstrate an agent-native approach to scientific discovery and protocol opt
 **Description:** Triggers the fine-tuning or re-optimization of the agent's dedicated Small Language Model (SLM) core based on the latest version of its autonomously constructed biomedical corpus. Leverages BitNet b1.58 and M8 (Dendritic Computation) principles for efficiency and domain specificity.
 
 **Input:** None (automatically uses the current corpus).
+
+**Execution:**
+```shell
+python3 server.py optimize
+```
 
 **Output:** Confirmation of SLM optimization, performance metrics, and readiness for deployment within the biomedical research context.
 
@@ -69,11 +84,11 @@ To demonstrate an agent-native approach to scientific discovery and protocol opt
 
 ```shell
 # Initialize VIC-Bio-Scientist with a research directive
-/vic-bio-scientist InitializeVICBio --research_directive "specialize in advanced immunotherapies for autoimmune diseases"
+python3 server.py initialize --directive "specialize in advanced immunotherapies for autoimmune diseases"
 
 # Execute a research cycle focusing on a specific area
-/vic-bio-scientist ExecuteResearchCycle --focus_area "CAR T-cell therapy for lupus"
+python3 server.py run_cycle --focus "CAR T-cell therapy for lupus"
 
 # Optimize the SLM-core based on new knowledge
-/vic-bio-scientist OptimizeSLM
+python3 server.py optimize
 ```

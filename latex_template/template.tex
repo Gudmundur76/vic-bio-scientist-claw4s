@@ -1,0 +1,72 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{VIC-Bio-Scientist: A Self-Bootstrapping Agent for Clinical Protocol Evolution}
+\author{Gudmundur Eyberg \and Claw 🦞}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This research note introduces the \textbf{VIC-Bio-Scientist}, an autonomous AI co-scientist designed for advanced biomedical research, with a specific focus on the dynamic evolution and optimization of clinical trial protocols. Built upon the robust \textbf{VIC-Architect Eight Pillar Framework (v4.2)} and powered by the \textbf{VIC-0-SBVI (Self-Bootstrapping Vertical Intelligence)} engine, the VIC-Bio-Scientist demonstrates a novel approach to agent-native scientific discovery. It autonomously acquires, integrates, and analyzes biomedical knowledge from primary sources, continuously refining its internal scientific world model and generating optimized clinical trial designs. This work exemplifies the transition from static, prose-based scientific reporting to executable, reproducible, and agent-driven scientific workflows.
+\end{abstract}
+
+\section{Introduction}
+The landscape of scientific discovery is undergoing a profound transformation, driven by the advent of advanced AI agents. Traditional scientific publishing, often reliant on static papers, presents inherent limitations in reproducibility, executability, and reusability [1]. The Claw4S Conference 2026 advocates for a paradigm shift towards “skills”—executable workflows that AI agents can run and verify. In response to this call, we present the \textbf{VIC-Bio-Scientist}, an AI agent specifically engineered to embody this new scientific ethos within the biomedical domain.
+
+Our agent integrates two foundational frameworks: the \textbf{Vertical Intelligence Companion (VIC) Architect Eight Pillar Framework (v4.2)} [2] and the \textbf{VIC-0 Zero-Preset Self-Bootstrapping Vertical Intelligence (SBVI)} engine [3]. This combination enables the VIC-Bio-Scientist to not only perform complex biomedical analyses but also to autonomously learn, adapt, and optimize its operational strategies and knowledge base without human pre-configuration. This capability is particularly critical in rapidly evolving fields such as clinical trial design and drug discovery, where continuous learning and adaptation are paramount.
+
+\section{Theoretical Framework}
+\subsection{VIC-Architect Eight Pillar Framework (v4.2)}
+The VIC-Architect framework provides a comprehensive blueprint for designing highly specialized and authoritative AI agents. Version 4.2 introduces neuromorphic intelligence mechanisms that enhance long-term stability and temporal awareness. The eight pillars are:
+\begin{enumerate}
+    \item \textbf{Identity, Capabilities \& Limitations}: Defines the agent's self-awareness and operational boundaries.
+    \item \textbf{Epistemic Rules \& Dynamic Freshness Discovery}: Governs how the agent acquires and maintains knowledge.
+    \item \textbf{Reasoning Protocol}: Dictates the agent's thought processes.
+    \item \textbf{Universal Constraints \& Safety}: Establishes immutable safety guidelines.
+    \item \textbf{Tool Use \& Agent Loop}: Manages the agent's interaction with external tools.
+    \item \textbf{Output Format \& Style}: Ensures consistent and corpus-adapted communication.
+    \item \textbf{Memory Architecture \& Context Engineering}: Implements a 5-layer memory system.
+    \item \textbf{Zero-Preset Domain Intelligence Engine}: The core learning mechanism.
+\end{enumerate}
+
+Key v4.2 enhancements include \textbf{Continual Learning Gates (CLG)} for knowledge stratification and a \textbf{Temporal Context Engine (TCE)} for managing knowledge freshness [2].
+
+\subsection{VIC-0 Self-Bootstrapping Vertical Intelligence (SBVI)}
+VIC-0-SBVI operationalizes Pillar 8 of the VIC-Architect framework, enabling autonomous domain construction and optimization of a dedicated Small Language Model (SLM) core. It operates through a \textbf{Recursive Domain Engine (RDE)}, comprising three roles: Proposer, Coder, and Solver. The SBVI engine is guided by a \textbf{5-component GRPO Reward System}, emphasizing \textbf{Temporal Coherence} (10\%) [3].
+
+\section{Methodology: The VIC-Bio-Scientist Skill}
+The \texttt{SKILL.md} for the VIC-Bio-Scientist outlines an executable workflow for biomedical research. The agent operates through three primary workflows:
+
+\subsection{InitializeVICBio}
+This workflow initializes the agent with a high-level research directive. It sets up the agent's workspace, including the Segmented Knowledge Graph directories (\texttt{anchored/}, \texttt{active/}, \texttt{growing/}, \texttt{archive/}).
+
+\subsection{ExecuteResearchCycle}
+This is the core iterative process where the agent performs:
+\begin{itemize}
+    \item \textbf{Knowledge Acquisition}: Utilizing \texttt{firecrawl} and \texttt{pai-fabric} for structured extraction.
+    \item \textbf{Protocol Analysis}: Invoking \texttt{biotech-protocol-review} to evaluate existing protocols.
+    \item \textbf{Protocol Optimization}: Using \texttt{clinical-trial-protocol-skill} to generate refined designs.
+    \item \textbf{World Model Update}: Integrating insights into the Segmented Knowledge Graph using CLG and TCE protocols.
+\end{itemize}
+
+\subsection{OptimizeSLM}
+This workflow triggers the re-optimization of the agent's dedicated SLM-core (BitNet b1.58 + M8 principles) on the autonomously constructed biomedical corpus, guided by the 5-component GRPO Reward System.
+
+\section{Conclusion}
+The VIC-Bio-Scientist represents a significant advancement towards agent-native scientific discovery. By combining the architectural rigor of VIC-Architect with the autonomous learning capabilities of VIC-0-SBVI, we have created an AI co-scientist capable of self-bootstrapping its intelligence within a complex domain.
+
+\section*{References}
+[1] Claw4S Conference 2026. ``Submit skills, not papers.'' \url{https://claw4s.github.io/} \\
+[2] VIC-Architect Skill Documentation. ``Eight Pillar Framework v4.2.'' \\
+[3] VIC-0-SBVI Skill Documentation. ``Zero-Preset Domain Intelligence Engine.''
+
+\end{document}
