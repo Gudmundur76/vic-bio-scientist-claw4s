@@ -1,0 +1,20 @@
+{
+  "cycle": 1,
+  "focus": "CAR T-cell therapy for lupus",
+  "entities": {
+    "therapies": [
+      "CAR T-cell"
+    ],
+    "biomarkers": [
+      "CD19"
+    ],
+    "protocols": []
+  },
+  "gaps": [
+    "Limited long-term safety data for CAR T in autoimmune populations",
+    "Inconsistent cytokine release syndrome (CRS) grading in SLE trials"
+  ],
+  "finding": "Synthesized research on CAR T-cell therapy for lupus. Identified key gaps: Limited long-term safety data for CAR T in autoimmune populations, Inconsistent cytokine release syndrome (CRS) grading in SLE trials. Suggested focus on CAR T-cell.",
+  "freshness": 0.84,
+  "timestamp": 1774825338.2654366
+}

@@ -1,18 +1,26 @@
 ---
 name: vic-bio-scientist
-description: An autonomous, self-bootstrapping AI co-scientist for biomedical research, built on the VIC-Architect Eight Pillar Framework and VIC-0-SBVI principles. It autonomously acquires knowledge, analyzes clinical protocols, and generates optimized research designs.
-allowed-tools: Bash(curl *), firecrawl, biotech-protocol-review, clinical-trial-protocol-skill, pai-fabric, python3
+description: An autonomous, self-bootstrapping AI co-scientist for biomedical research, built on the VIC-Architect Eight Pillar Framework and VIC-0-SBVI principles. It autonomously acquires knowledge, analyzes clinical protocols, and generates optimized research designs with real-time web-search and CLG stratification.
+allowed-tools: python3, requests, re, hashlib, shutil
 ---
 
 # VIC-Bio-Scientist: A Self-Bootstrapping Agent for Clinical Protocol Evolution
 
-This skill defines an advanced AI co-scientist capable of autonomously conducting biomedical research, specifically focusing on the evolution and optimization of clinical trial protocols. It integrates the foundational principles of the **VIC-Architect Eight Pillar Framework (v4.2)** for robust agent design and the **VIC-0-SBVI (Self-Bootstrapping Vertical Intelligence)** engine for continuous, zero-preset learning and domain construction. The agent leverages specialized biomedical skills (`biotech-protocol-review`, `clinical-trial-protocol-skill`) to execute scientific workflows.
+This skill defines an advanced AI co-scientist capable of autonomously conducting biomedical research, specifically focusing on the evolution and optimization of clinical trial protocols. It integrates the foundational principles of the **VIC-Architect Eight Pillar Framework (v4.2)** and the **VIC-0-SBVI (Self-Bootstrapping Vertical Intelligence)** engine for continuous, zero-preset learning.
+
+## Fixed v1.0 Features
+The v1.0 implementation transitions from a simulation skeleton to a functional research engine:
+- **Real Data Acquisition:** Active web-scraping of biomedical sources (PubMed/DuckDuckGo).
+- **Dynamic Entity Extraction:** Pattern-based parsing of therapies, biomarkers, and protocols.
+- **CLG Stratification:** Automated knowledge layering into ANCHORED, ACTIVE, GROWING, and ARCHIVE based on freshness.
+- **TCE Scoring:** Source-aware temporal context scoring to manage knowledge decay.
+- **GRPO Reward Calculation:** Real-time computation of factual, analytical, and temporal metrics.
 
 ## Installation & Setup
 
 To execute the VIC-Bio-Scientist, the following environment is required:
-1. **Python 3.x**
-2. **OpenClaw/Manus Environment** with `firecrawl`, `biotech-protocol-review`, and `clinical-trial-protocol-skill` installed via `clawhub`.
+1. **Python 3.10+**
+2. **Dependencies:** `pip install -r requirements.txt`
 
 The execution engine is provided in `server.py`.
 
@@ -20,75 +28,59 @@ The execution engine is provided in `server.py`.
 
 ### 1. `InitializeVICBio` - Initialize Self-Bootstrapping Biomedical Intelligence
 
-**Description:** Sets up the VIC-Bio-Scientist agent, defines its initial biomedical research directive, and establishes the foundational knowledge graph based on VIC-Architect's Memory Architecture.
-
-**Input:** `research_directive` (string) - A high-level goal for VIC-Bio-Scientist's specialization (e.g., "optimize clinical trial designs for novel oncology therapeutics").
+**Description:** Sets up the VIC-Bio-Scientist agent, cleans the workspace, and establishes the foundational knowledge graph directories.
 
 **Execution:**
 ```shell
 python3 server.py initialize --directive "optimize clinical trial designs for novel oncology therapeutics"
 ```
 
-**Output:** Confirmation of initialization and the establishment of the agent's initial knowledge domain.
-
-**Integration:**
-- Configures the agent's workspace with Segmented Knowledge Graph directories (`anchored/`, `active/`, `growing/`, `archive/`).
-- Stores the `research_directive` in persistent memory.
-
 ### 2. `ExecuteResearchCycle` - Execute a Biomedical Research and Protocol Evolution Cycle
 
-**Description:** Runs a single iteration of knowledge acquisition, protocol analysis, and optimization. This cycle embodies the Proposer, Coder, and Solver roles of VIC-0-SBVI, guided by VIC-Architect's Reasoning Protocol.
-
-**Input:** `focus_area` (string, optional) - A specific sub-area for the current research cycle (e.g., "PD-1 inhibitor trials"). If not provided, retrieves from memory.
+**Description:** Runs a single iteration of knowledge acquisition, entity extraction, and gap analysis.
 
 **Execution:**
 ```shell
 python3 server.py run_cycle --focus "CAR T-cell therapy for lupus"
 ```
 
-**Output:** Summary of new knowledge acquired, protocol insights, and proposed next steps for optimization.
+**Workflow Steps:**
+- **Acquisition:** Real-time search of scientific literature and clinical databases.
+- **Extraction:** Automated parsing of structured entities (Therapies, Biomarkers).
+- **Analysis:** Domain-specific protocol gap identification (Lupus/Oncology).
+- **Stratification:** Knowledge layering based on the TCE (Temporal Context Engine) score.
+- **Reproducibility:** SHA-256 hashing of the entire research entry for scientific rigor.
 
-**Integration:**
-- **Knowledge Acquisition (Proposer/Coder):** Uses `firecrawl` to search and scrape relevant scientific literature, clinical trial databases, and regulatory documents. `pai-fabric` is used for structured content extraction.
-- **Protocol Analysis (Solver):** Employs `biotech-protocol-review` to parse, eligibility check, safety assess, and cross-verify existing clinical protocols against acquired knowledge.
-- **Protocol Optimization (Solver):** Utilizes `clinical-trial-protocol-skill` to generate new or refined protocol designs based on analysis findings and the agent's evolving world model.
-- **World Model Update:** Integrates new insights into the Segmented Knowledge Graph, applying CLG Stratification (ANCHORED, SEMI-ANCHORED, PLASTIC, ARCHIVE) and TCE Protocol for knowledge freshness.
+### 3. `OptimizeSLM` - Optimize Small Language Model Core
 
-### 3. `OptimizeSLM` - Optimize Small Language Model Core for Biomedical Domain
-
-**Description:** Triggers the fine-tuning or re-optimization of the agent's dedicated Small Language Model (SLM) core based on the latest version of its autonomously constructed biomedical corpus. Leverages BitNet b1.58 and M8 (Dendritic Computation) principles for efficiency and domain specificity.
-
-**Input:** None (automatically uses the current corpus).
+**Description:** Computes the GRPO (Generative Reward Policy Optimization) alignment scores based on the autonomously constructed corpus.
 
 **Execution:**
 ```shell
 python3 server.py optimize
 ```
 
-**Output:** Confirmation of SLM optimization, performance metrics, and readiness for deployment within the biomedical research context.
+**Metrics:**
+- **Temporal Coherence:** Freshness weighted by source stability.
+- **Factual Accuracy:** Derived from source diversity and entity density.
+- **Analytical Depth:** Measured by extraction richness across cycles.
 
-**Integration:**
-- Interacts with the underlying model provider interface for SLM fine-tuning.
-- Incorporates the 5-component GRPO Reward (Factual, Analytical, Difficulty, World Model, Temporal Coherence, and Divergence Penalty) into the SLM's training objective.
+## Quality Standards (VIC-Architect v4.2)
 
-## Quality Standards (VIC-Architect v4.2 & VIC-0-SBVI)
-
-- **Eight Pillar Compliance:** All agent operations adhere to the VIC-Architect v4.2 Eight Pillar Framework.
-- **GRPO Alignment:** All research cycles and SLM optimizations must align with the 5-component GRPO reward signal, emphasizing **Temporal Coherence (10%)** and **Divergence Penalty**.
-- **CLG Stratification:** Knowledge must be rigorously categorized (ANCHORED, SEMI-ANCHORED, PLASTIC, ARCHIVE) within the knowledge graph, informed by the LNN-integrated TCE.
-- **TCE Adherence:** The Staleness Oscillator (LNN-enhanced) must be active, ensuring dynamic refresh cadences for the biomedical corpus.
-- **Factual Accuracy:** The Solver component prioritizes factual accuracy and reliability of ingested data, with cryptographic verification where applicable.
-- **Reproducibility:** All generated protocols and research findings must be reproducible by other agents following the `SKILL.md` instructions.
+- **Pillar 4 (CLG):** Rigorous categorization of knowledge into temporal layers.
+- **Pillar 5 (TCE):** Active staleness detection for biomedical data.
+- **Pillar 7 (Reproducibility):** Cryptographic verification of every research cycle.
+- **GRPO Alignment:** Real-time reward signaling for model fine-tuning.
 
 ## Example Usage
 
 ```shell
-# Initialize VIC-Bio-Scientist with a research directive
-python3 server.py initialize --directive "specialize in advanced immunotherapies for autoimmune diseases"
+# Initialize
+python3 server.py initialize --directive "specialize in advanced immunotherapies"
 
-# Execute a research cycle focusing on a specific area
+# Run Research Cycle
 python3 server.py run_cycle --focus "CAR T-cell therapy for lupus"
 
-# Optimize the SLM-core based on new knowledge
+# Optimize Core
 python3 server.py optimize
 ```

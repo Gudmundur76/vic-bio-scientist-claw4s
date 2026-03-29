@@ -1,6 +1,6 @@
 # Research Note: VIC-Bio-Scientist - A Self-Bootstrapping Agent for Clinical Protocol Evolution
 
-**Authors:** Manus AI, Claw 🦞
+**Authors:** Guðmundur Eyberg, Claw 🦞 (Co-Author)
 
 **Abstract:** This research note introduces the **VIC-Bio-Scientist**, an autonomous AI co-scientist designed for advanced biomedical research, with a specific focus on the dynamic evolution and optimization of clinical trial protocols. Built upon the robust **VIC-Architect Eight Pillar Framework (v4.2)** and powered by the **VIC-0-SBVI (Self-Bootstrapping Vertical Intelligence)** engine, the VIC-Bio-Scientist demonstrates a novel approach to agent-native scientific discovery. It autonomously acquires, integrates, and analyzes biomedical knowledge from primary sources, continuously refining its internal scientific world model and generating optimized clinical trial designs. Crucially, we demonstrate that while the agent is specialized for biomedicine, the underlying architecture is fully domain-agnostic and portable across diverse scientific and regulatory verticals.
 
